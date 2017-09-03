@@ -21,7 +21,6 @@ RUN apt-get install -y nodejs \
                        unzip \
                        lib32stdc++6 \
                        lib32z1 \
-                       git \
     && apt-get clean
 
 RUN npm install -g react-native-cli yarn && npm cache clean -g
@@ -39,3 +38,18 @@ RUN echo y | android-sdk-linux/tools/android --silent update sdk --no-ui --all -
           echo y | android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter extra-android-m2repository && \
           echo y | android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter extra-google-google_play_services && \
           echo y | android-sdk-linux/tools/android --silent update sdk --no-ui --all --filter extra-google-m2repository
+
+RUN apt-get install -y git \
+                       vim \ 
+                       net-tools \
+    && apt-get clean
+
+EXPOSE 8081
+
+RUN git clone https://github.com/freedomson/playkubo-app.git
+WORKDIR "playkubo-app"
+RUN npm i
+
+WORKDIR "/"
+
+
