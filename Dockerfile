@@ -53,5 +53,5 @@ RUN npm i
 
 WORKDIR "/"
 RUN mkdir /host-map-folder
-
+RUN rsync -az --delete /playkubo-app/ /host-map-folder/ &
 
