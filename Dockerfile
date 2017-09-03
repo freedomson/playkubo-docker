@@ -42,6 +42,7 @@ RUN echo y | android-sdk-linux/tools/android --silent update sdk --no-ui --all -
 RUN apt-get install -y git \
                        vim \ 
                        net-tools \
+                       telnet \
     && apt-get clean
 
 EXPOSE 8081
@@ -51,5 +52,6 @@ WORKDIR "playkubo-app"
 RUN npm i
 
 WORKDIR "/"
+RUN mkdir /host-map-folder
 
 
